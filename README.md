@@ -2,16 +2,37 @@
 
 The purpose of this package is to allow for client-only deploys of Meteor apps that use [tap-i18n](http://github.com/tapevents/tap-i18n).
 
-Adding this package with `meteor add tap:i18n-bundler` will mean that each time the server starts, the app will do the following:
+`tap:i18n-bundler` will automatically maintain a `/public/i18n/` folder within your Meteor project in the following way:
 
-- Create a `/public/i18n/tap-i18n.json` file (create folders if necessary)
-- This file will contain all the translations available in a single download available on clients at `/i18n/tap-i18n.json`
-- Eventually we will have [tbc]
-- which is made availalbe to clients by Meteor. Clients will automatically request this file and load the i18n data it contains into tap-i18n.
+```
+.meteor/
+project-tap.i18n // see tap:i18n
+myApp.html // your templates, using `{{_ "translate_me"}}`
+public/
+  i18n/ // this folder is created by `tap:i18n-bundler`
+    tap-i18n.json // contains all languages
+    en.i18n.json
+    zh.i18n.json
+    de.i18n.json
+i18n/ // your project's i18n files
+  en.i18n.json
+  zh.i18n.json
+packages/
+  some-package/
+    package.js
+    package-tap.i18n
+    i18n/ // 3rd party package i18n files
+      en.i18n.json
+      de.i18n.json
+```
 
-Using the `/public` folder means it should work in Cordova and other 'client-only' deployment environmnents. It works with [meteor-build-client](https://github.com/frozeman/meteor-build-client).
+This package will combine all languages accross project and packages into a single json file in the `/public/i18n` directory, which is accessible in Cordova and other client-based deployment environmnents. It works with [meteor-build-client](https://github.com/frozeman/meteor-build-client).
 
-This package will simply generate the JSON file whenever the result of `TAPi18n.translations` changes on the server. As such, It's designed to work only in development mode, and will automatically re-createa a new JSON file each time your i18n files change - so you should edit your the original files, not the generated one!
+All of the files in `/public/i18n` will be automatically generated if you change the project's `i18n/i18n.json` files.
+
+**This package only works in development mode** the files should be generated in development and be re-deployed each time they change.
+
+You should edit your the original files, not the generated one!
 
 ### Why?
 
