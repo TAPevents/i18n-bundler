@@ -4,7 +4,7 @@ The purpose of this package is to allow for client-only deploys of Meteor apps t
 
 ### Usage
 
-Set your `cdn_path` in `project-tap.i18n` to `/i18n`
+Set your `cdn_path` in `project-tap.i18n` to `/i18n` and `meteor add tap:i18n-bundler`
 
 `tap:i18n-bundler` will automatically maintain a `/public/i18n/` folder within your Meteor project in the following way:
 
