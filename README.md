@@ -43,7 +43,9 @@ To disable this, and pre-load everything, set `TAPi18n.precacheBundle = true`. T
 
 Until tap-i18n supports native bundling (which will require a breaking change), this is a way of solving https://github.com/TAPevents/tap-i18n/issues/93 etc.
 
-Whilst this solution might not be the most elegent, it seems to be the only one that works in all cases without requiring all packages to be re-released with an updated verion of tap-i18n.
+The main difficulty is that `tap:i18n` generates packages that are pre-built with their specific fallback language, and can't be modified during the build process easily. As such, re-building a unified file for client deployment has to be done after the build process.
+
+Whilst this solution is not most elegent and requires Meteor to run before the project can be re-deployed, it uses Meteor's default static filesystem, which should be somewhat futureproofed.
 
 Other failed approaches were:
 
