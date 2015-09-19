@@ -2,9 +2,14 @@
 
 The purpose of this package is to allow for client-only deploys of Meteor apps that use [tap-i18n](http://github.com/tapevents/tap-i18n).
 
-It will automatically create a `/public/i18n/tap-i18n.json` file, which is made availalbe to clients by Meteor. Clients will automatically request this file and load the i18n data it contains into tap-i18n.
+Adding this package with `meteor add tap:i18n-bundler` will mean that each time the server starts, the app will do the following:
 
-Using the `/public` folder means it should work in Cordova and other 'client-only' deployment environmnents.
+- Create a `/public/i18n/tap-i18n.json` file (create folders if necessary)
+- This file will contain all the translations available in a single download available on clients at `/i18n/tap-i18n.json`
+- Eventually we will have [tbc]
+- which is made availalbe to clients by Meteor. Clients will automatically request this file and load the i18n data it contains into tap-i18n.
+
+Using the `/public` folder means it should work in Cordova and other 'client-only' deployment environmnents. It works with [meteor-build-client](https://github.com/frozeman/meteor-build-client).
 
 This package will simply generate the JSON file whenever the result of `TAPi18n.translations` changes on the server. As such, It's designed to work only in development mode, and will automatically re-createa a new JSON file each time your i18n files change - so you should edit your the original files, not the generated one!
 
@@ -16,11 +21,10 @@ Whilst this solution might not be the most elegent, it seems to be the only one 
 
 Other failed approaches were:
 
-* Fastender
+* meterhacks:fastrender
   * Doesn't work because it injects request responses; most client build processes use a static index.html so we don't get a chance to inject after bundling
-* Modifying the TAP-i18n build process
+* Changing the TAP-i18n build process
   * This didn't work because 3rd party packages are built and shipped with whatever config the package author gives, so they'd have to rebuild a version for each conceivable combination of `supported_languages`
 
----
 
 MIT License, Chris Hitchcott, 2015
