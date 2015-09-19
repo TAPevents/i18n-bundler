@@ -10,7 +10,7 @@ Package.on_use(function(api) {
   api.use([
     'coffeescript',
     'jquery',
-    'tap:i18n'
+    'tap:i18n@1.5.1'
   ], ['client', 'server']);
 
   api.add_files("i18n-bundler.coffee", "server");
