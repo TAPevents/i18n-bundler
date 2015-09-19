@@ -2,7 +2,12 @@
 
 The purpose of this package is to allow for client-only deploys of Meteor apps that use [tap-i18n](http://github.com/tapevents/tap-i18n).
 
-It will automatically create a `/public/i18n/tap-i18n.json` file, which is made availalbe to clients by Meteor. Clients will automatically request this file and load the i18n data it contains into tap-i18n.
+Adding this package with `meteor add tap:i18n-bundler` will mean that each time the server starts, the app will do the following:
+
+- Create a `/public/i18n/tap-i18n.json` file (create folders if necessary)
+- This file will contain all the translations available in a single download available on clients at `/i18n/tap-i18n.json`
+- Eventually we will have [tbc]
+- which is made availalbe to clients by Meteor. Clients will automatically request this file and load the i18n data it contains into tap-i18n.
 
 Using the `/public` folder means it should work in Cordova and other 'client-only' deployment environmnents. It works with [meteor-build-client](https://github.com/frozeman/meteor-build-client).
 
