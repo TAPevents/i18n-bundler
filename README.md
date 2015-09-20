@@ -4,14 +4,18 @@ The purpose of this package is to allow for client-only deploys of Meteor apps t
 
 ### Usage
 
-Set your `cdn_path` in `project-tap.i18n` to `/i18n` and `meteor add tap:i18n-bundler`
+`meteor add tap:i18n-bundler`
+
+Set your `cdn_path` in `project-tap.i18n` to `i18n`
+
+Now your Cordova and `meteor-build-client` bundles have all i18n files available offline.
 
 `tap:i18n-bundler` will automatically maintain a `/public/i18n/` folder within your Meteor project in the following way:
 
 ```javascript
 .meteor/
 project-tap.i18n // see tap:i18n
-  { "cdn_path" : "/i18n" }
+  { "cdn_path" : "i18n" }
 myApp.html // your templates, using `{{_ "translate_me"}}`
 public/
   i18n/ // this folder is created by `tap:i18n-bundler`
