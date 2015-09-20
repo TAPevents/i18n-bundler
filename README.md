@@ -35,18 +35,16 @@ packages/
       de.i18n.json
 ```
 
-This package will combine all languages accross project and packages into a unified json files for each language, which are dynamically loaded when the language change and are served from the `/public/i18n` directory - accessible in Cordova and other client-based deployment environmnents. It's designed to work with Cordova and [meteor-build-client](https://github.com/frozeman/meteor-build-client).
+This package will combine all languages accross project and packages into a unified json file for each language, which are dynamically loaded when the client's language changes and are served from the `/public/i18n` directory - accessible in Cordova and other client-based deployment environmnents. It's designed specifically as a way of supporting Cordova and [meteor-build-client](https://github.com/frozeman/meteor-build-client) with `tap:i18n`.
 
 All of the files in `/public/i18n` will be automatically re-generated if you change any of your project's `lang.i18n.json` files.
 
 **This package only maintains the public folder in development mode** the files should be generated in development and be re-deployed each time they change. You should edit your the original files, not the generated one!
 
-On the client, `tap:i18n-bundler` uses `tap:i18n`'s `cdn_path` to make the request for it's expected JSON files, which requests the relevant `ROOT_URL/i18n/language.i18n.json` language file only when required. This saves memory by not pre-loading everything.
-
-If you want to pre-load all of the languages into memory, set `TAPi18n.precacheBundle = true`. This will make a single ajax request for `i18n/tap-i18n.json`, which contains all language data.
+On the client, `tap:i18n-bundler` requests the relevant `ROOT_URL/i18n/language.i18n.json` language file only when required. This saves memory by not pre-loading everything. If you prefer to pre-load all of the languages into memory, set `TAPi18n.precacheBundle = true`. This will make a single ajax request for `i18n/tap-i18n.json`, which contains all language data when the app first loads.
 
 
-### Why?
+### Why do we need `i18n-bundler`?
 
 Until tap-i18n supports native bundling (which will require a breaking change), this is a way of solving https://github.com/TAPevents/tap-i18n/issues/93 etc.
 
