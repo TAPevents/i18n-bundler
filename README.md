@@ -2,7 +2,7 @@
 
 The purpose of this package is to allow for client-only deploys of Meteor apps that use [tap-i18n](http://github.com/tapevents/tap-i18n).
 
-### Usage
+## Usage
 
 `meteor add tap:i18n-bundler`
 
@@ -43,8 +43,27 @@ All of the files in `/public/i18n` will be automatically re-generated if you cha
 
 On the client, `tap:i18n-bundler` requests the relevant `ROOT_URL/i18n/language.i18n.json` language file only when required. This saves memory by not pre-loading everything. If you prefer to pre-load all of the languages into memory, set `TAPi18n.precacheBundle = true`. This will make a single ajax request for `i18n/tap-i18n.json`, which contains all language data when the app first loads.
 
+## Examples
 
-### Why do we need `i18n-bundler`?
+### Static Files Version
+
+Have a look at the `/examples/example-static` for a [`meteor-build-client`](https://github.com/frozeman/meteor-build-client) compatible example.
+
+```bash
+cd ./examples/example-static
+meteor # run meteor once to rebuild the language files, then exit
+meteor-build-client ./../build/ --path ""
+```
+
+### Cordova
+
+```bash
+cd ./examples/example-cordova
+meteor # run meteor once to rebuild the language files, then exit
+meteor run android
+```
+
+## Why do we need `i18n-bundler`?
 
 Until tap-i18n supports native bundling (which will require a breaking change), this is a way of solving https://github.com/TAPevents/tap-i18n/issues/93 etc.
 
