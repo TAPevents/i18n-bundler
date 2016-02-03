@@ -1,0 +1,14 @@
+<head>
+  <title>example</title>
+</head>
+
+<body>
+  <h1>{{_ 'welcome'}}</h1>
+
+  {{> hello}}
+</body>
+
+<template name="hello">
+  {{> i18n_buttons}}
+  <p>{{_ 'this_language'}}</p>
+</template>
