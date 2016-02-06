@@ -1,7 +1,7 @@
 Package.describe({
   name: "tap:i18n-bundler",
   summary: "Bundles your project's tap-i18n files and pre-loads them on the client automatically",
-  version: '0.2.0',
+  version: '0.3.0',
   git: 'https://github.com/TAPevents/tap-bundler'
 });
 
