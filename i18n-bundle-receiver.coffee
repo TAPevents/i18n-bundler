@@ -1,6 +1,11 @@
 i18nPath = 'i18n/tap-i18n.json'
 
 Meteor.startup ->
+  # set absolute JSON path for offline apps
+  if TAPi18n.conf.cdn_path.indexOf('/') is -1
+    if !Meteor.isCordova
+      path = window.location.pathname
+      TAPi18n.conf.cdn_path = path.substring(0, path.lastIndexOf('/')) + "/" + TAPi18n.conf.cdn_path
 
   if TAPi18n.precacheBundle
     $.ajax
