@@ -1,6 +1,8 @@
 if process.env.NODE_ENV is 'development'
 
   fs = Npm.require "fs"
+  if !process.env.PWD
+    process.env.PWD = process.cwd()
   staticRoot = process.env.PWD + "/public"
   assetsPath = staticRoot + "/i18n"
   i18nAll = assetsPath + "/tap-i18n.json"
